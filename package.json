@@ -4,7 +4,8 @@
   "description": "Learn Nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "run-test"
+    "test": "run-test",
+    "start": "node index.js"
   },
   "author": "dathh",
   "license": "ISC",
