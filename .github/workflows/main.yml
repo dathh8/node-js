@@ -11,6 +11,7 @@ on:
 
 jobs:
   build:
+    name: Build Image
     runs-on: self-hosted
 
     strategy:
@@ -18,14 +19,17 @@ jobs:
         node-version: [20.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: |
+      - name: Install node_module
+        run: |
             npm install
-      - run: |
+      - name: Start node_server
+        run: |
             pm2 stop 0
             pm2 start 0
             pm2 save
